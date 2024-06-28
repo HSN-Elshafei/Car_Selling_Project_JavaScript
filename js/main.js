@@ -1,7 +1,10 @@
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-import { getAuth, onAuthStateChanged,signOut  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut,
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA6EaLaov-StQjXqnqlUuztQ9QeI49RbiI",
@@ -17,73 +20,83 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const auth = getAuth();
-document.getElementById("serveSignOut").addEventListener("click",() =>{
-    signOut(auth).then(() => {
-        document.getElementById('serveSignOut').classList.replace("d-block","d-none");
-        document.getElementById('serveLogin').classList.replace("d-none", "d-flex")
-    }).catch((error) => {
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("serveSignOut").addEventListener("click", () => {
+    signOut(auth)
+      .then(() => {
+        document
+          .getElementById("serveSignOut")
+          .classList.replace("d-block", "d-none");
+        document
+          .getElementById("serveLogin")
+          .classList.replace("d-none", "d-flex");
+      })
+      .catch((error) => {
         // An error happened.
       });
-});
-onAuthStateChanged(auth, (user) => {
+  });
+  onAuthStateChanged(auth, (user) => {
     if (user) {
-        document.getElementById('serveSignOut').classList.replace("d-none","d-block")
-    }
-    else{
-        document.getElementById('serveLogin').classList.replace("d-none", "d-flex")
+      document
+        .getElementById("serveSignOut")
+        .classList.replace("d-none", "d-block");
+    } else {
+      document
+        .getElementById("serveLogin")
+        .classList.replace("d-none", "d-flex");
     }
   });
 
-// ==== Navbar Toggler ====
-var menuBtn = document.getElementById("menu-btn");
-var closeBtn = document.getElementById("close-btn");
-var navBar = document.querySelector(".nav-links");
+  // ==== Navbar Toggler ====
+  var menuBtn = document.getElementById("menu-btn");
+  var closeBtn = document.getElementById("close-btn");
+  var navBar = document.querySelector(".nav-links");
 
-menuBtn.onclick = () => {
-    navBar.classList.toggle('toggle');
-}
+  menuBtn.onclick = () => {
+    navBar.classList.toggle("toggle");
+  };
 
-closeBtn.onclick = () => {
-    navBar.classList.remove('toggle');
-}
+  closeBtn.onclick = () => {
+    navBar.classList.remove("toggle");
+  };
 
-// ==== Side Menu Toggler =====================================
-var menuBtn = document.querySelector(".menu-bar");
-var closeBar = document.getElementById("close-bar");
-var menuToggle = document.querySelector(".menu-toggle");
+  // ==== Side Menu Toggler =====================================
+  var menuBtn = document.querySelector(".menu-bar");
+  var closeBar = document.getElementById("close-bar");
+  var menuToggle = document.querySelector(".menu-toggle");
 
-menuBtn.onclick = () => {
-    menuToggle.classList.add('active')
-}
+  menuBtn.onclick = () => {
+    menuToggle.classList.add("active");
+  };
 
-closeBar.onclick = () => {
-    menuToggle.classList.remove('active')
-}
+  closeBar.onclick = () => {
+    menuToggle.classList.remove("active");
+  };
 
-// ==== Slide Swiper play =====================================
-var swiper = new Swiper(".my-hero", {
+  // ==== Slide Swiper play =====================================
+  var swiper = new Swiper(".my-hero", {
     spaceBetween: 0,
     centeredSlides: true,
     autoplay: {
-        delay: 3500,
-        disableOnInteraction: false,
+      delay: 3500,
+      disableOnInteraction: false,
     },
-});
+  });
 
-// ==== fixed nav on scrolling ================================
-window.onscroll = () => {
+  // ==== fixed nav on scrolling ================================
+  window.onscroll = () => {
     if (window.scrollY > 50) {
-        document.querySelector('.navbar .bottom-nav').classList.add('active');
+      document.querySelector(".navbar .bottom-nav").classList.add("active");
     } else {
-        document.querySelector('.navbar .bottom-nav').classList.remove('active');
+      document.querySelector(".navbar .bottom-nav").classList.remove("active");
     }
-}
-// ==== client Swiper ================================
-var swiper = new Swiper(".myClient",{
+  };
+  // ==== client Swiper ================================
+  var swiper = new Swiper(".myClient", {
     direction: "vertical",
-    pagination:{
-        el: ".swiper-pagination",
-        clickable: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
     },
+  });
 });
-

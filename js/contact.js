@@ -20,57 +20,57 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+document.addEventListener("DOMContentLoaded", function () {
+  var contactBtn = document.getElementById("contact-btn");
 
-var contactBtn = document.getElementById("contact-btn");
+  contactBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    var fuName = document.getElementById("fuName").value;
+    var email = document.getElementById("Email").value;
+    var subject = document.getElementById("Subject").value;
+    var message = document.getElementById("message").value;
+    const collectionRef = collection(db, "message");
+    try {
+      if (
+        validateEmail(email) &&
+        fuName != "" &&
+        subject != "" &&
+        message != ""
+      ) {
+        await addDoc(collectionRef, {
+          name: fuName,
+          email: email,
+          subject: subject,
+          message: message,
+        });
 
-contactBtn.addEventListener("click", async (e) => {
-  e.preventDefault();
-  var fuName = document.getElementById("fuName").value;
-  var email = document.getElementById("Email").value;
-  var subject = document.getElementById("Subject").value;
-  var message = document.getElementById("message").value;
-  const collectionRef = collection(db, "message");
-  try {
-    if (
-      validateEmail(email) &&
-      fuName != "" &&
-      subject != "" &&
-      message != ""
-    ) {
-      await addDoc(collectionRef, {
-        name: fuName,
-        email: email,
-        subject: subject,
-        message: message,
-      });
-      
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Message Has Been Sent Successfully",
-        showConfirmButton: false,
-        timer: 4500,
-      });
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Message Has Been Sent Successfully",
+          showConfirmButton: false,
+          timer: 4500,
+        });
+      } else {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Invalid Message",
+          showConfirmButton: false,
+          timer: 4500,
+        });
+      }
+    } catch (error) {
+      console.error(`Error uploading car ID: ${car.id}`, error);
     }
-    else{
-      Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "Invalid Message",
-        showConfirmButton: false,
-        timer: 4500,
-      });
+  });
+  function validateEmail(email) {
+    const regex = /^[a-zA-Z]{1,3}[a-zA-Z0-9._]{0,10}@(yahoo|gmail)\.com$/;
+
+    if (regex.test(email)) {
+      return true;
+    } else {
+      return false;
     }
-  } catch (error) {
-    console.error(`Error uploading car ID: ${car.id}`, error);
   }
 });
-function validateEmail(email) {
-  const regex = /^[a-zA-Z]{1,3}[a-zA-Z0-9._]{0,10}@(yahoo|gmail)\.com$/;
-
-  if (regex.test(email)) {
-    return true;
-  } else {
-    return false;
-  }
-}

@@ -28,7 +28,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
-
+document.addEventListener("DOMContentLoaded", function () {
 var productItem = document.getElementById("product-item");
 
 // Function to render products
@@ -162,4 +162,5 @@ onAuthStateChanged(auth, (user) => {
   } else {
     fetchAndRenderProducts();
   }
+});
 });

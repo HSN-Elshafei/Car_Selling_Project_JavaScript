@@ -1,0 +1,21 @@
+body {
+  background: url(../images/bg-sign.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.form-container {
+  color: antiquewhite;
+  margin: auto;
+  padding: 50px;
+  border: 1px solid #d70006;
+  border-radius: 10%;
+  background-color: rgba(0, 0, 0, 0.5); /* Background with opacity */
+}
+.full-height {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}

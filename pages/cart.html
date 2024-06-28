@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" type="text/css" href="../bootstrap-5.3.3-dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="../css/cart.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <!-- == Start Navbar Section == -->
+        <div class="navbar">
+          <div class="top-nav">
+            <div class="contacts">
+              <span>
+                <i class="fa-solid fa-clock"></i>
+                Gruop1@gmail.com
+              </span>
+              <span>
+                <i class="fa-solid fa-clock"></i>
+                9.00am - 10.00pm
+              </span>
+              <span>
+                <i class="fa-solid fa-location-dot"></i>
+                bai-suef smart village
+              </span>
+            </div>
+            <div class="socials">
+              <i class="fa-brands fa-facebook"></i>
+              <i class="fa-brands fa-twitter"></i>
+              <i class="fa-brands fa-instagram"></i>
+              <i class="fa-brands fa-linkedin"></i>
+              <i class="fa-brands fa-youtube"></i>
+            </div>
+          </div>
+    
+          <div class="bottom-nav">
+            <div class="logo">
+              <a href="index.html">Car<span>ITI</span></a>
+              <img src="../images/logos/carlogo.png" />
+            </div>
+            <div class="nav-content">
+              <ul class="nav-links">
+                <li><a class="" href="../index.html">Home</a></li>
+                <li><a class="" href="about.html">About</a></li>
+                <li><a class="" href="../pages/services.html">Services</a></li>
+                <li><a class="" href="../pages/products.html">Products</a></li>
+                <li><a class="" href="../pages/contact.html">Contact US</a></li>
+                <hr>
+                <li><a class="d-none ms-3" id="serveLogin" href="../pages/login.html"><i class="fa-solid fa-right-to-bracket"></i></a></li>
+                <li><a class="d-none" id="serveSignOut" href="../index.html"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+                <li><a href="../pages/cart.html" class="cart active ">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <span class="bg-light"><i class="fa-solid fa-car"></i></span>
+                </a></li>
+                <i class="fa-solid fa-xmark active" id="close-btn"></i>
+              </ul>
+    
+              <div class="contacts">
+                <div class="phone">
+                  <i class="fa-solid fa-phone-volume"></i>
+                  <div class="info">
+                    <p>Need Help</p>
+                    <span>+082 22 98 456</span>
+                  </div>
+                </div>
+    
+                <i class="fa-solid fa-bars menu-bar"></i>
+                <i class="fa-solid fa-bars" id="menu-btn"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- == End Navbar Section == -->
+
+  <!-- == Start Menu Section == -->
+  <div class="menu-toggle">
+    <div class="logo">
+      <img src="../images/logos/carlogo.png" alt="" />
+    </div>
+    <p class="desc">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
+      pariatur libero nemo praesentium voluptatem dolore, nam voluptate magni
+      totam sint minima.
+    </p>
+    <div class="details">
+      <h3>
+        <span>/</span>
+        <span>/</span>
+        <span>/</span>
+        contact us
+      </h3>
+
+      <div class="box">
+        <i class="fa-solid fa-phone-volume"></i>
+        <div class="info">
+          <p>Phone</p>
+          <span>+082 22 98 456</span>
+        </div>
+      </div>
+      <div class="box">
+        <i class="fa-solid fa-envelope"></i>
+        <div class="info">
+          <p>Email</p>
+          <span>group1@gmail.com</span>
+        </div>
+      </div>
+
+      <div class="box">
+        <i class="fa-solid fa-location-dot"></i>
+        <div class="info">
+          <p>Address</p>
+          <span>Bani-suef smart valliage</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="socials">
+      <h3>
+        <span>/</span>
+        <span>/</span>
+        <span>/</span>
+        stay connected
+      </h3>
+      <i class="fa-brands fa-facebook"></i>
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-instagram"></i>
+      <i class="fa-brands fa-linkedin"></i>
+      <i class="fa-brands fa-youtube"></i>
+    </div>
+    <i class="fa-solid fa-xmark" id="close-bar"></i>
+  </div>
+  <!-- == End Menu Section == -->
+  <main>
+    <div class="basket">
+      <div class="basket-module">
+        <label for="promo-code">Enter a promotional code</label>
+        <input
+          id="promo-code"
+          type="text"
+          name="promo-code"
+          maxlength="5"
+          class="promo-code-field"
+        />
+        <button class="promo-code-cta">Apply</button>
+      </div>
+      <div class="basket-labels">
+        <ul>
+          <li class="item item-heading">Item</li>
+          <li class="price">Price</li>
+          <li class="quantity">Quantity</li>
+          <li class="subtotal">Subtotal</li>
+        </ul>
+      </div>
+      <div id="basket-products"></div>
+    </div>
+    <aside>
+      <div class="summary">
+        <div class="summary-total-items">
+          <span class="total-items"></span> Items in your Bag
+        </div>
+        <div class="summary-subtotal">
+          <div class="subtotal-title">Subtotal</div>
+          <div class="subtotal-value final-value" id="basket-subtotal">
+            0.00
+          </div>
+          <div class="summary-promo hide">
+            <div class="promo-title">Promotion</div>
+            <div class="promo-value final-value" id="basket-promo"></div>
+          </div>
+        </div>
+        <div class="summary-delivery">
+          <select name="delivery-collection" class="summary-delivery-selection">
+            <option value="0" selected="selected">Select Collection or Delivery</option>
+            <option value="collection">Collection</option>
+            <option value="first-class">Royal Mail 1st Class</option>
+            <option value="second-class">Royal Mail 2nd Class</option>
+            <option value="signed-for">Royal Mail Special Delivery</option>
+          </select>
+        </div>
+        <div class="summary-total">
+          <div class="total-title">Total</div>
+          <div class="total-value final-value" id="basket-total">0.00</div>
+        </div>
+        <div class="summary-checkout">
+          <button class="checkout-cta">Go to Secure Checkout</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+  <!-- == Start Footer Section == -->
+  <div class="footer">
+    <div class="top-footer">
+      <div class="footer-col">
+        <img src="../images/logos/carlogo.png" />
+        <p>Call Us Anytime</p>
+        <h4>+082 22 98 456</h4>
+        <br /><br />
+        <p>Visit Our Location</p>
+        <div class="address">
+          Smart Village New Bani <br />Bani Suef City
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <span>///</span>
+        <h5>Our Services</h5>
+        <a href="#s1"> Engine Repair Services</a>
+        <a href="#s2"> Tire Change & Repair</a>
+        <a href="#s3"> Car Denting Repair</a>
+        <a href="#s4"> Battery Check & Repair</a>
+      </div>
+
+      <div class="footer-col">
+        <span>///</span>
+        <h5>Useful Links</h5>
+        <a href="s1"> About CarITI</a>
+        <a href="s2"> Membership Details</a>
+        <a href="s3"> Opening Hours</a>
+        <a href="s4"> Expert Mechanics</a>
+        <a href="s4"> Contact Us</a>
+      </div>
+
+      <div class="footer-col">
+        <span>///</span>
+        <h5>Newsletter</h5>
+        <input type="text" placeholder="email address" />
+        <button>Subscribe</button>
+      </div>
+    </div>
+    <div class="bottom-footer">
+      <div class="box">
+        <p>@2024, <span>Group1 ITI Design</span>, All Rights Reserved</p>
+      </div>
+      <div class="box">
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-pinterest"></i>
+      </div>
+      <div class="box">
+        <a>Privacy & Policy</a>
+        <a>Terms & Conditions</a>
+        <a>Publish & Rights</a>
+      </div>
+    </div>
+  </div>
+  <!-- == End Footer Section == -->
+
+  <script type="module" src="../js/cart.js">
+
+
+  </script>
+  <!-- === Sweet alert script    ================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- === Swiperjs script    ================================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- === Icon Font Awesome  ================================================ -->
+  <script src="https://kit.fontawesome.com/194ed55864.js" crossorigin="anonymous"></script>
+
+  <!-- === Bootstrap 5 script ================================================ -->
+  <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+  <!-- === main script tag    ================================================ -->
+  <script type="module" src="../js/main.js"></script>
+</body>
+</html>
